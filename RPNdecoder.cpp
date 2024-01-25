@@ -1,6 +1,8 @@
 #include <iostream>
+#include "stackWithAccess.hpp"
 
 int main(int argc, char *argv[]){
-	std::cout<<"Hello World!";
+	stack instructionStack;
+
 	return 0;
 }

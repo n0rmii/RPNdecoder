@@ -57,3 +57,7 @@ int& stack::operator[] (size_t index) {
 	}
 	return temp->val;
 }
+
+const size_t stack::getSize () const {
+	return size;
+}

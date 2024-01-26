@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <memory>
 
 struct stackElem {
@@ -8,7 +9,7 @@ struct stackElem {
 class stack {
 private:
 	std::unique_ptr<stackElem> top;
-	int size;
+	size_t size;
 	static const size_t max_size = 1000;
 public:
 	stack();
@@ -17,4 +18,5 @@ public:
 	int pop();
 	int& operator[] (size_t index);
 	const int& operator[] (size_t index) const;
+	const size_t getSize() const;
 };

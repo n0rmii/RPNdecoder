@@ -3,7 +3,7 @@
 #include "stackWithAccess.hpp"
 
 int main(int argc, char *argv[]){
-	stack dataStack;
+	stackf dataStack;
 	bool running = true;
 	std::string input;
 	std::string valHolder = "";
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
 					break;
 				case ' ':
 					if (valHolder != "") {
-						dataStack.push(std::stoi(valHolder));
+						dataStack.push(std::stof(valHolder));
 						valHolder = "";
 					}
 					break;
@@ -41,7 +41,12 @@ int main(int argc, char *argv[]){
 					// dataStack.push(s - '0');
 			}
 		}
-		std::cout<<"Output: "<<dataStack.pop()<<std::endl;
+		if(dataStack.getSize() > 0){
+			std::cout<<"Output: "<<dataStack.pop()<<std::endl;
+		}
+		else{
+			std::cout<<"Program exit or error";
+		}
 	}
 	return 0;
 }

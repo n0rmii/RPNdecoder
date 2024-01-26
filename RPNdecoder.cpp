@@ -6,6 +6,7 @@ int main(int argc, char *argv[]){
 	stack dataStack;
 	bool running = true;
 	std::string input;
+	std::string valHolder = "";
 	int tmpVal;
 	while(running){
 		std::cout<<"Input: ";
@@ -30,9 +31,14 @@ int main(int argc, char *argv[]){
 					dataStack.push(dataStack.pop() / tmpVal);
 					break;
 				case ' ':
+					if (valHolder != "") {
+						dataStack.push(std::stoi(valHolder));
+					}
+					valHolder = "";
 					break;
 				default:
-					dataStack.push(s - '0');
+					valHolder += s;
+					// dataStack.push(s - '0');
 			}
 		}
 		std::cout<<"Output: "<<dataStack.pop()<<std::endl;

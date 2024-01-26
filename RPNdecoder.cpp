@@ -33,8 +33,8 @@ int main(int argc, char *argv[]){
 				case ' ':
 					if (valHolder != "") {
 						dataStack.push(std::stoi(valHolder));
+						valHolder = "";
 					}
-					valHolder = "";
 					break;
 				default:
 					valHolder += s;

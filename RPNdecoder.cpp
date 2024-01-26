@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 #include "stackWithAccess.hpp"
 
 int main(int argc, char *argv[]){
@@ -30,6 +31,9 @@ int main(int argc, char *argv[]){
 					tmpVal = dataStack.pop(); // I need to switch the positions of pops
 					dataStack.push(dataStack.pop() / tmpVal);
 					break;
+				case '^':
+					tmpVal = dataStack.pop();
+					dataStack.push(std::pow(dataStack.pop(), tmpVal));
 				case ' ':
 					if (valHolder != "") {
 						dataStack.push(std::stof(valHolder));
@@ -37,8 +41,13 @@ int main(int argc, char *argv[]){
 					}
 					break;
 				default:
-					valHolder += s;
-					// dataStack.push(s - '0');
+					if(s >= '.' && s <= '9'){
+						valHolder += s;
+					}
+					else{
+						std::cout<<"\nIncorrect input detected: "<<s<<'\n';
+					}
+					break;
 			}
 		}
 		if(dataStack.getSize() > 0){

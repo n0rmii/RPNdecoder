@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
 	bool running = true;
 	std::string input;
 	std::string valHolder = "";
-	int tmpVal;
+	float tmpVal;
 	while(running){
 		std::cout<<"Input: ";
 		std::getline(std::cin, input);
@@ -51,10 +51,14 @@ int main(int argc, char *argv[]){
 			}
 		}
 		if(dataStack.getSize() > 0){
-			std::cout<<"Output: "<<dataStack.pop()<<std::endl;
+			std::cout<<"Output: "<<dataStack.pop()<<'\n';
 		}
-		else{
-			std::cout<<"Program exit or error";
+		if(dataStack.getSize() > 0){
+			std::cout<<"Wrong input: data left in stack: "<<dataStack.pop();
+			while(dataStack.getSize() > 0){
+				std::cout<<", "<<dataStack.pop();
+			}
+			std::cout<<'\n';
 		}
 	}
 	return 0;
